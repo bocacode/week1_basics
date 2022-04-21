@@ -1,0 +1,24 @@
+{
+  "name": "js-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arrays.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bocacode/week1_basics.git"
+  },
+  "keywords": [],
+  "author": "Todd Albert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bocacode/week1_basics/issues"
+  },
+  "homepage": "https://github.com/bocacode/week1_basics#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.3"
+  }
+}
