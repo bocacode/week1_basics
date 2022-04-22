@@ -15,6 +15,7 @@ import fetch from 'node-fetch'
 
 // ------------------------
 
+// GET is by default
 // fetch('https://api.sampleapis.com/beers/ale')
 //   .then(response => {
 //     return response.json()
@@ -44,37 +45,13 @@ import fetch from 'node-fetch'
 //   })
 //   .catch(err => console.error(err))
 
-// GET fetch
-function goGetMyBeers() {
-  let allBeers
-  let coffees
-
-  const newBeer = { price: '$7', name: 'Stela Artois', id: 220 }
-
-  fetch('https://api.sampleapis.com/beers/ale') // go and get data API
-    .then(myResponse => myResponse.json()) // formating the response
-    .then(data => {
-      data.push(newBeer) // manipulating data and adding a new beer
-      allBeers = data
-    })
-    .catch(myErr => console.error('we got an error:', myErr))
-
-  fetch('https://api.sampleapis.com/coffee/hot')
-    .then(allCoffees => allCoffees.json())
-    .then(formattedCoffees => (coffees = formattedCoffees))
-    .catch(err => console.err(err))
-
-  console.log(allBeers, allCoffees)
-}
-
-goGetMyBeers()
 // // one way to write anonymous
 // function (myErr) {
 //   return console.log(myErr)
 //   console.log('test') // this line will never run
 // }
 
-// // arrow function way
+// arrow function way
 // () => {}
 
 // () => {
@@ -83,3 +60,24 @@ goGetMyBeers()
 // }
 
 // () => console.log('test') // implicit return
+
+
+// homework challenge
+// to get coffees and Beers and combine them into 1 array
+function getAllBeersAndCoffees() {
+  const allBeersAndCoffees = []
+
+  const newBeer = { price: '$7', name: 'Stela Artois', id: 220 }
+  fetch('https://api.sampleapis.com/beers/ale')
+    .then(response => response.json())
+    .then(data => {
+      allBeersAndCoffees.push(data) // add data to the AllBeersAndCoffees Array
+      return fetch('https://api.sampleapis.com/coffee/hot') // when this .then finishes we
+    })
+    .then(response => response.json())
+    .then(allCoffees => allBeersAndCoffees.push(allCoffees)) // add data to the AllBeersAndCoffees Array
+    .then(() => console.log(allBeersAndCoffees))
+    .catch(myErr => console.error('we got an error:', myErr))
+}
+
+getAllBeersAndCoffees()
